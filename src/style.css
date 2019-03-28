@@ -1,0 +1,56 @@
+Button {
+    margin: 10px;
+}
+
+.separar {
+    margin-top: 50px;
+}
+
+.categorias {
+    border-bottom: rgb(182, 182, 182) solid 1px;
+    color: rgb(87, 87, 87);
+    padding: 30px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 0px;
+}
+
+.container {
+    background-color: #fafcfd;
+    width: 100%;
+    padding: 0px;   
+}
+
+.btn-primary {
+    color: black;
+    background-color: #fff;
+    border-color: #F5F5F5;
+}
+
+.btn-primary:hover {
+    color: black;
+    background-color: #fff;
+    border-color: #F5F5F5;
+}
+
+.show>.btn-primary.dropdown-toggle {
+    color: black;
+    background-color: #fff;
+    border-color: #F5F5F5;
+}
+
+.newPost {
+    background-color:#fff;
+    padding: 20px;
+    padding-bottom: 0px;
+    border-radius: 6px;
+    border: rgb(182, 182, 182) solid 2px;
+    margin-bottom: 70px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.posts {
+    margin-left: 50px;
+    margin-right: 50px;
+}

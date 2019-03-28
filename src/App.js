@@ -1,17 +1,22 @@
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button'
 import Categories from './components/Categories'
 import NewPost from './components/NewPost'
+import NavBar from './components/NavBar'
 import Posts from './components/Posts'
+import { Container } from 'react-bootstrap';
+import './style.css'
+
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <Container className="container">
+        <NavBar />
         <Categories />
         <Posts />
         <NewPost />
-      </div>
+      </Container>
     );
   }
 }
