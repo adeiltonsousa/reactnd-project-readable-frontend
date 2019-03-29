@@ -3,9 +3,11 @@ import Categories from './components/Categories'
 import NewPost from './components/NewPost'
 import NavBar from './components/NavBar'
 import Posts from './components/Posts'
+import Teste from './components/Teste'
 import { Container } from 'react-bootstrap'
 import './style.css'
 import * as PostsAPI from './PostsAPI'
+
 
 
 class App extends Component {
@@ -32,6 +34,7 @@ class App extends Component {
         <Categories categorias={ listCat } />
         <Posts />
         <NewPost />
+        <Teste />
       </Container>
     );
   }
