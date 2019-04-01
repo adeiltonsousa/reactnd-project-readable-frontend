@@ -14,6 +14,7 @@ class App extends Component {
 
   state = {
     categories: [],
+    posts: []
   }
 
   componentDidMount() {
@@ -22,17 +23,24 @@ class App extends Component {
         this.setState({ categories: categories }));
   };
 
+  componentDidMount() {
+    PostsAPI.getAll()
+      .then((posts) =>
+        this.setState({ posts: posts }));
+  };
 
   render() {
 
     var listCat = this.state.categories
+    var listPost = this.state.posts
+    console.log(listPost)
     console.log(listCat)
 
     return (
       <Container className="container">
         <NavBar />
         <Categories categorias={ listCat } />
-        <Posts />
+        <Posts posts={ listPost } />
         <NewPost />
         <Teste />
       </Container>

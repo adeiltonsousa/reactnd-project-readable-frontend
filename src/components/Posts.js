@@ -7,12 +7,21 @@ class Posts extends React.Component {
   render() {
 
     return (
-      <ListGroup className="posts separar">
-        <ListGroup.Item>Post 01         </ListGroup.Item>
-        <ListGroup.Item>Post 02         </ListGroup.Item>
-        <ListGroup.Item>Post 03         </ListGroup.Item>
-        <ListGroup.Item>Post 04         </ListGroup.Item>
-      </ListGroup>
+      <div>
+        <ListGroup className="posts separar">
+        { this.props.posts.map((post) => (
+          
+          <ListGroup.Item key={post.id}>
+          <p>
+          { post.title } 
+          </p>
+
+          </ListGroup.Item>
+
+        ))}
+      
+        </ListGroup>
+      </div>
     );
   }
 }
