@@ -18,28 +18,27 @@ class App extends Component {
   }
 
   componentDidMount() {
-    PostsAPI.getAll()
+    PostsAPI.getCats()
       .then((categories) =>
         this.setState({ categories: categories }));
-  };
 
-  componentDidMount() {
-    PostsAPI.getAll()
+    PostsAPI.getPosts()
       .then((posts) =>
         this.setState({ posts: posts }));
   };
+
 
   render() {
 
     var listCat = this.state.categories
     var listPost = this.state.posts
-    console.log(listPost)
-    console.log(listCat)
+    console.table(listPost)
+
 
     return (
       <Container className="container">
         <NavBar />
-        <Categories categorias={ listCat } />
+        <Categories categorias={listCat} />
         <Posts posts={ listPost } />
         <NewPost />
         <Teste />
