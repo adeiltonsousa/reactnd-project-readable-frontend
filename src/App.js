@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import Categories from './components/Categories'
 import NewPost from './components/NewPost'
 import NavBar from './components/NavBar'
-import Posts from './components/Posts'
-import Teste from './components/Teste'
+// import Teste from './components/Teste'
+import ContentPosts from './components/ContentPosts'
 import { Container } from 'react-bootstrap'
 import './style.css'
 import * as PostsAPI from './PostsAPI'
-
 
 
 class App extends Component {
@@ -21,27 +20,19 @@ class App extends Component {
     PostsAPI.getCats()
       .then((categories) =>
         this.setState({ categories: categories }));
-
-    PostsAPI.getPosts()
-      .then((posts) =>
-        this.setState({ posts: posts }));
   };
-
 
   render() {
 
     var listCat = this.state.categories
-    var listPost = this.state.posts
-    console.table(listPost)
-
 
     return (
       <Container className="container">
         <NavBar />
         <Categories categorias={listCat} />
-        <Posts posts={ listPost } />
+        <ContentPosts />           
         <NewPost />
-        <Teste />
+        {/* <Teste /> */}
       </Container>
     );
   }

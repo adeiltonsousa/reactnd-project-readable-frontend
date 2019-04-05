@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar } from 'react-bootstrap';
-import icon from './icon.svg'
+import icon from '../static/img/icon.svg'
 
 
 

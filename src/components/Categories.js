@@ -3,6 +3,8 @@ import { Dropdown, DropdownButton, Row, Col } from 'react-bootstrap'
 import { clickButton } from '../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom'
+
 
 class Categories extends React.Component {
 
@@ -28,7 +30,7 @@ class Categories extends React.Component {
     return (
       <div className="separar categorias">
         <Row>
-       
+        <Link to="/post">Ir para Post</Link>         
           <Col> 
             <DropdownButton id="dropdown-Secondary-button" title="Escolha uma Categoria">
             { this.props.categorias.map((c) =>

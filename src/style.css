@@ -18,7 +18,8 @@ Button {
 .container {
     background-color: #fafcfd;
     width: 100%;
-    padding: 0px;   
+    padding: 0px;
+    min-width: 1000px;  
 }
 
 .btn-primary {
@@ -54,3 +55,19 @@ Button {
     margin-left: 50px;
     margin-right: 50px;
 }
+
+.infosPost {
+    font-size: .8rem;
+    padding-left: 20px;
+    padding-top: 15px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.bt_pontos {
+    padding-left: 7px;
+    padding-right: 7px;
+    width: 30px;
+    height: auto;
+}
+
