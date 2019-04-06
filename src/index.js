@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { Store } from './store';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Post from './components/Post'
+import DetailedPost from './components/DetailedPost'
 import Erro404 from './components/Erro404'
 
 
@@ -15,7 +15,8 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
             <Route path="/" exact={true} component={ App } />
-            <Route path="/post" component={ Post } />
+            <Route path="/:category/:id" component={ DetailedPost } />
+
             <Route path='*' component={ Erro404 } />
         </Switch>
       </BrowserRouter>

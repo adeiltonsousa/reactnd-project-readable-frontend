@@ -1,12 +1,12 @@
 import React from 'react'
-import { Dropdown, DropdownButton, Row, Col } from 'react-bootstrap'
+import { Row, Col, ButtonToolbar, Button } from 'react-bootstrap'
 import { clickButton } from '../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom'
 
 
-class Categories extends React.Component {
+class ListCategories extends React.Component {
 
   state = {
     inputValue: ''
@@ -29,16 +29,25 @@ class Categories extends React.Component {
 
     return (
       <div className="separar categorias">
-        <Row>
-        <Link to="/post">Ir para Post</Link>         
+        <p>
+          Escolha uma Categoria:
+        </p>
+        <Row>        
+        { this.props.categorias.map((c) =>
+          <Col  key={c.path} >
+            <ButtonToolbar>
+              <Link to={c.name} >
+                <Button variant="info" size="lg" block> {c.name} </Button>
+              </Link>
+            </ButtonToolbar>
+          </Col>
+          )}
+        </Row>
+        
+        
+        
+        {/* <Row>
           <Col> 
-            <DropdownButton id="dropdown-Secondary-button" title="Escolha uma Categoria">
-            { this.props.categorias.map((c) =>
-              <Dropdown.Item key={c.path} onChange={this.inputChange} value={this.inputValue}    >
-              {c.name}
-              </Dropdown.Item>
-            )}
-            </DropdownButton>
             <input
               onChange={this.inputChange} 
               type='text'
@@ -53,7 +62,7 @@ class Categories extends React.Component {
               Você está na Categoria: <strong>{newValue}</strong> 
             </p>
           </Col>
-        </Row>
+        </Row> */}
       </div>
     );
   }
@@ -67,4 +76,4 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ clickButton }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps) (Categories)
+export default connect(mapStateToProps, mapDispatchToProps) (ListCategories)

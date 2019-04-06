@@ -7,9 +7,9 @@ Button {
 }
 
 .categorias {
-    border-bottom: rgb(182, 182, 182) solid 1px;
     color: rgb(87, 87, 87);
-    padding: 30px;
+    padding-bottom: 15px;
+    padding-top: 15px;
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 0px;
@@ -54,6 +54,8 @@ Button {
 .posts {
     margin-left: 50px;
     margin-right: 50px;
+    border: 2px rgb(170, 191, 200) solid;
+    padding: 20px
 }
 
 .infosPost {

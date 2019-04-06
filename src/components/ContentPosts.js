@@ -4,6 +4,7 @@ import BodyPost from './BodyPost'
 import * as PostsAPI from '../PostsAPI'
 
 
+
 class ContentPosts extends React.Component {
 
     state = {
@@ -21,14 +22,19 @@ class ContentPosts extends React.Component {
     var posts = this.state.posts
 
     return (
-      <div>
-        { posts.map((post) => ( 
-            <span  key={post.id} >
-                <BodyPost post={ post } />
-                <InfoPost post={ post } />
-            </span>
-        ))}
-      </div>
+      <span>
+          <p className="separar categorias">
+            Postagens Recentes:
+          </p>
+        <div className="post">     
+          { posts.map((post) => ( 
+              <span  key={post.id} >
+                  <BodyPost post={ post } />
+                  <InfoPost post={ post } />
+              </span>
+          ))}
+        </div>
+      </span>
     );
   }
 }

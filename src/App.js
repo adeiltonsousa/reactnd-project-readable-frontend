@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Categories from './components/Categories'
+import Categories from './components/ListCategories'
 import NewPost from './components/NewPost'
 import NavBar from './components/NavBar'
 // import Teste from './components/Teste'
