@@ -1,36 +1,27 @@
 import React from 'react'
 import { Row, Col, ButtonToolbar, Button } from 'react-bootstrap'
-import { clickButton } from '../actions'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { changeValue } from '../action/fieldActions'
+
 
 
 class ListCategories extends React.Component {
 
-  state = {
-    inputValue: ''
-  }
-  
-  inputChange = event => {
-    this.setState({
-      inputValue: event.target.value
-    })
-  }
-
   render() {
-
-    const { 
-      clickButton,
-      newValue,
-    } = this.props;
-
-    const { inputValue } = this.state;
 
     return (
       <div className="separar categorias">
+        <span>
+          <label>{ this.props.value }</label><br />
+          <input onChange={ this.props.changeValue } value={ this.props.value }/>
+        </span>
+
+
+
         <p>
-          Escolha uma Categoria:
+          Escolha uma Categoriaa:
         </p>
         <Row>        
         { this.props.categorias.map((c) =>
@@ -43,37 +34,20 @@ class ListCategories extends React.Component {
           </Col>
           )}
         </Row>
-        
-        
-        
-        {/* <Row>
-          <Col> 
-            <input
-              onChange={this.inputChange} 
-              type='text'
-              value={inputValue}        
-            />
-            <button onClick={() => clickButton(inputValue)}>
-              Click me!
-            </button>
-          </Col>
-          <Col>
-            <p>
-              Você está na Categoria: <strong>{newValue}</strong> 
-            </p>
-          </Col>
-        </Row> */}
       </div>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    value: state.field.value
+  }
+}
 
-const mapStateToProps = store => ({
-  newValue: store.clickState.newValue
-});
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ changeValue }, dispatch)
+}
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ clickButton }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps) (ListCategories)
+export default connect(mapStateToProps, mapDispatchToProps)(ListCategories)

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Categories from './components/ListCategories'
 import NewPost from './components/NewPost'
 import NavBar from './components/NavBar'
-// import Teste from './components/Teste'
 import ContentPosts from './components/ContentPosts'
 import { Container } from 'react-bootstrap'
 import './style.css'
@@ -32,7 +31,6 @@ class App extends Component {
         <Categories categorias={listCat} />
         <ContentPosts />           
         <NewPost />
-        {/* <Teste /> */}
       </Container>
     );
   }

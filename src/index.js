@@ -2,21 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux';
-import { Store } from './store';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import DetailedPost from './components/DetailedPost'
 import Erro404 from './components/Erro404'
+import fieldReducer from './reducers/fieldReducer'
 
-
+const reducers = combineReducers({
+  field: fieldReducer
+})
 
 ReactDOM.render(
-    <Provider store={Store}>
+    <Provider store={createStore(reducers)}>
       <BrowserRouter>
         <Switch>
             <Route path="/" exact={true} component={ App } />
             <Route path="/:category/:id" component={ DetailedPost } />
-
             <Route path='*' component={ Erro404 } />
         </Switch>
       </BrowserRouter>
