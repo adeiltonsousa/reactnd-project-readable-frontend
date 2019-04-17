@@ -3,8 +3,6 @@ import InfoPost from './InfoPost'
 import BodyPost from './BodyPost'
 import * as PostsAPI from '../PostsAPI'
 
-
-
 class ContentPosts extends React.Component {
 
     state = {

@@ -7,14 +7,13 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import DetailedPost from './components/DetailedPost'
 import Erro404 from './components/Erro404'
-import fieldReducer from './reducers/fieldReducer'
+import reducers from './reducers/reducers'
 
-const reducers = combineReducers({
-  field: fieldReducer
-})
+
+const store = createStore(reducers)
 
 ReactDOM.render(
-    <Provider store={createStore(reducers)}>
+    <Provider store={store}>
       <BrowserRouter>
         <Switch>
             <Route path="/" exact={true} component={ App } />

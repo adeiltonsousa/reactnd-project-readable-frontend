@@ -1,10 +1,7 @@
 import React from 'react'
-import { Row, Col, ButtonToolbar, Button } from 'react-bootstrap'
+import { Row, Col, ButtonToolbar, Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { changeValue } from '../action/fieldActions'
-
 
 
 class ListCategories extends React.Component {
@@ -13,18 +10,12 @@ class ListCategories extends React.Component {
 
     return (
       <div className="separar categorias">
-        <span>
-          <label>{ this.props.value }</label><br />
-          <input onChange={ this.props.changeValue } value={ this.props.value }/>
-        </span>
-
-
 
         <p>
           Escolha uma Categoriaa:
         </p>
         <Row>        
-        { this.props.categorias.map((c) =>
+        { this.props.categories.map((c) =>
           <Col  key={c.path} >
             <ButtonToolbar>
               <Link to={c.name} >
@@ -39,15 +30,6 @@ class ListCategories extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    value: state.field.value
-  }
-}
+const mapStateToProps = state => ({categories: state.dataCategories.categories})
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ changeValue }, dispatch)
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListCategories)
+export default connect(mapStateToProps)(ListCategories)
