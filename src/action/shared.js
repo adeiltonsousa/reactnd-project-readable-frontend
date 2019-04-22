@@ -12,7 +12,7 @@ function receiveData(categories) {
 export function handleInitialData() {
     return (dispatch) => {
         return Promise.all([
-            PostsAPI.listCategories()
+            PostsAPI.getServerCategories()
         ]).then(([categories]) => {
             dispatch(receiveData(categories))
             console.log(categories)

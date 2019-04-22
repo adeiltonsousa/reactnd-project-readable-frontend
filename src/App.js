@@ -5,28 +5,26 @@ import NavBar from './components/NavBar'
 import ContentPosts from './components/ContentPosts'
 import { Container } from 'react-bootstrap'
 import './style.css'
+import * as PostsAPI from './PostsAPI';
+import listCategories from './action/categories'
+import { connect } from 'react-redux'
 
+class App extends React.Component {
 
-class App extends Component {
-
-  state = {
-    posts: []
+  componentDidMount() {
+    PostsAPI.getCategories()
+      .then(categories => {
+        dispatch(listCategories(categories));
+      })
   }
-  
-  // componentDidMount() {
-  //   PostsAPI.getCats()
-  //     .then((categories) =>
-  //       this.setState({ categories: categories }));
-  // };
 
   render() {
-
 
     return (
       <Container className="container">
         <NavBar />
-        <ListCategories  />
-        <ContentPosts />           
+        <ListCategories />
+        <ContentPosts />
         <NewPost />
       </Container>
     );

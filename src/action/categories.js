@@ -1,22 +1,8 @@
-import * as PostsAPI from '../PostsAPI'
-
 export const LIST_CATEGORIES = 'LIST_CATEGORIES'
 
-
-//FUNÇÃO CRIADORA DE AÇÃO
-function listCategories(categorie) {
+export default function listCategories(categories) {  
     return {
         type: LIST_CATEGORIES,
-        categorie,
+        payload: categories
     }
 }
-
-export function handleListCategories(categorie) {
-    return (dispatch) => {
-        return PostsAPI.listCategories(categorie)
-            .then((categories) => 
-                this.setState({ categories: categories}))
-    }
-}
-
-

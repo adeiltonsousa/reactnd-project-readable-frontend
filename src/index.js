@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import DetailedPost from './components/DetailedPost'
 import Erro404 from './components/Erro404'
-import reducer from './reducers'
+import reducer from './reducers/categories'
 import middleware from './middleware'
 
 
