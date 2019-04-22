@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { combineReducers, createStore } from 'redux'
+import { createStore } from 'redux'
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import DetailedPost from './components/DetailedPost'
 import Erro404 from './components/Erro404'
-import reducers from './reducers/reducers'
+import reducer from './reducers'
+import middleware from './middleware'
 
 
-const store = createStore(reducers)
+const store = createStore(reducer, middleware)
 
 ReactDOM.render(
     <Provider store={store}>

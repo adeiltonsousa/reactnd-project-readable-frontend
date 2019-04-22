@@ -5,7 +5,6 @@ import NavBar from './components/NavBar'
 import ContentPosts from './components/ContentPosts'
 import { Container } from 'react-bootstrap'
 import './style.css'
-import * as PostsAPI from './PostsAPI'
 
 
 class App extends Component {
@@ -13,7 +12,7 @@ class App extends Component {
   state = {
     posts: []
   }
-
+  
   // componentDidMount() {
   //   PostsAPI.getCats()
   //     .then((categories) =>
@@ -22,12 +21,11 @@ class App extends Component {
 
   render() {
 
-    var listCat = this.state.categories
 
     return (
       <Container className="container">
         <NavBar />
-        <ListCategories categorias={listCat} />
+        <ListCategories  />
         <ContentPosts />           
         <NewPost />
       </Container>

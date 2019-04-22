@@ -2,9 +2,17 @@ import React from 'react'
 import { Row, Col, ButtonToolbar, Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-
+import { handleListCategories } from '../action/categories'
+import {
+  handleInitialData
+} from '../action/shared'
 
 class ListCategories extends React.Component {
+
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(handleInitialData(handleListCategories))
+  }
 
   render() {
 
@@ -12,7 +20,7 @@ class ListCategories extends React.Component {
       <div className="separar categorias">
 
         <p>
-          Escolha uma Categoriaa:
+          Escolha uma Categoria:
         </p>
         <Row>        
         { this.props.categories.map((c) =>
@@ -30,6 +38,6 @@ class ListCategories extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({categories: state.dataCategories.categories})
-
-export default connect(mapStateToProps)(ListCategories)
+export default connect((state) => ({
+    categories: state.categories
+}))(ListCategories)
