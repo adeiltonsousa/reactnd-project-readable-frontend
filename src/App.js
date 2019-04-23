@@ -6,29 +6,38 @@ import ContentPosts from './components/ContentPosts'
 import { Container } from 'react-bootstrap'
 import './style.css'
 import * as PostsAPI from './PostsAPI';
-import listCategories from './action/categories'
+import { listCategories } from './action/categories'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
 
+   state = {
+          loading: true
+   }
+
   componentDidMount() {
     PostsAPI.getCategories()
       .then(categories => {
-        dispatch(listCategories(categories));
+        this.props.dispatch( listCategories(categories) );
+
+        this.setState({ loading: false })
       })
   }
 
   render() {
 
+
+     if(this.state.loading) return <div>Loading...</div>
+
     return (
       <Container className="container">
         <NavBar />
         <ListCategories />
-        <ContentPosts />
+        {/* <ContentPosts /> */}
         <NewPost />
       </Container>
     );
   }
 }
 
-export default App;
+export default connect(null)(App)
