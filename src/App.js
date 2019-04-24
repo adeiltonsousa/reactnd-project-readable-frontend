@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ListCategories from './components/ListCategories'
 import NewPost from './components/NewPost'
 import NavBar from './components/NavBar'
@@ -11,9 +11,9 @@ import { connect } from 'react-redux'
 
 class App extends React.Component {
 
-   state = {
+  state = {
           loading: true
-   }
+  }
 
   componentDidMount() {
     PostsAPI.getCategories()
@@ -33,7 +33,7 @@ class App extends React.Component {
       <Container className="container">
         <NavBar />
         <ListCategories />
-        {/* <ContentPosts /> */}
+        <ContentPosts />
         <NewPost />
       </Container>
     );
