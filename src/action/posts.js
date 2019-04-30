@@ -12,15 +12,15 @@ function addPost(post) {
     }
 }
 
-export function handleAddTodo(name, cb) {
+export function addPosts(name, cb) {
     return (dispatch) => {
-        return PostsAPI.saveTodo(name)
-            .then((todo) => {
-                dispatch(addTodo(todo))
+        return PostsAPI.handleAddPost(name)
+            .then((post) => {
+                dispatch(addTodo(post))
                 cb()
             })
             .catch(() => {
-                alert('There was an error. Try again.')
+                alert('Erro')
             })
     }
 }
