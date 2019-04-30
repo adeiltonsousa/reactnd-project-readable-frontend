@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Col, Row, Button, ButtonToolbar, Alert, variant } from 'react-bootstrap';
 import {
-  handleAddTodo
+  addPosts
 } from '../action/posts'
 
 
