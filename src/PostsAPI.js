@@ -15,8 +15,15 @@ export const getCategories = () => {
     .then(ret => ret.categories)
 }
 
-export function handleAddPost() {
+export function getPosts() {
   return fetch(`${api}/posts`, { headers: headers })
-    .then(response => response.json())
+      .then(response => response.json())
 }
 
+export const handleAddPost = (post) => {	
+  return fetch(`${api}/posts`, { 	
+    method: 'POST',	
+    headers: headers,	
+    body: JSON.stringify(post)	
+  })	
+}
