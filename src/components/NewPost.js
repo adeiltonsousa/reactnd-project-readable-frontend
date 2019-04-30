@@ -43,39 +43,29 @@ class NewPost extends React.Component {
     });
   }
 
-  //   handleSubmit(event) {
-  //     let campo_vazio = "Preencha todos os ítens do formulário";
+    handleSubmit(event) {
+      let campo_vazio = "Preencha todos os ítens do formulário";
 
-  //     const addPosts = {
-  //         id: Math.random().toString(36).substr(-8),
-  //         timestamp: Date.now(),
-  //         title: this.state.title,
-  //         body: this.state.body,
-  //         author: this.state.author,
-  //         category: this.state.category,
-  //         voteScore: 0,
-  //         deleted: false,
-  //         commentCount: 0,
-  //         comments: [],
-  //     }
+      const addPosts = {
+          id: Math.random().toString(36).substr(-8),
+          timestamp: Date.now(),
+          title: this.state.title,
+          body: this.state.body,
+          author: this.state.author,
+          category: this.state.category,
+          voteScore: 0,
+          deleted: false,
+          commentCount: 0,
+          comments: [],
+      }
 
-  //     if (this.state.category!=="" & this.state.title!=="" & this.state.author!=="" & this.state.body!=="" ){
-  //       handleAddPost(addPosts);
-  //       event.preventDefault();
-  //     } else {
-  //       return document.getElementById('alerta').innerHTML = campo_vazio;
-  //     }
-  // }
-
-  addItem = (e) => {
-    e.preventDefault()
-    this.props.dispatch(handleAddTodo(
-        this.input.value,
-        () => this.input.value = ''
-    ))
-}
-
-
+      if (this.state.category!=="" & this.state.title!=="" & this.state.author!=="" & this.state.body!=="" ){
+        handleAddPost(addPosts);
+        event.preventDefault();
+      } else {
+        return document.getElementById('alerta').innerHTML = campo_vazio;
+      }
+  }
 
   render() {
     return (
@@ -132,7 +122,7 @@ class NewPost extends React.Component {
           <Row>
             <Col>
               <ButtonToolbar className="separar">
-                <Button variant="outline-secondary" onClick={this.addItem} >Postar</Button>
+                <Button variant="outline-secondary" onClick={this.handleSubmit} >Postar</Button>
                 <Button variant="outline-secondary">Cancelar</Button>
               </ButtonToolbar>
             </Col>
