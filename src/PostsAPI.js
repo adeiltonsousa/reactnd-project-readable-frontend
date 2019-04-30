@@ -17,10 +17,19 @@ export const getCategories = () => {
 
 export function getPosts() {
   return fetch(`${api}/posts`, { headers: headers })
-      .then(response => response.json())
+    .then(response => response.json())
 }
 
-export function detailsPost(id) {
-  return fetch(`${api}/posts/${id}`, { headers: headers })
-      .then(response => response.json())
+// export function detailsPost(id) {
+//   return fetch(`${api}/posts/${id}`, { headers: headers })
+//       .then(response => response.json())
+// }
+
+export const saveTodo = (post) => {
+  return fetch(`${api}/posts`, { 
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(post)
+  })
 }
+

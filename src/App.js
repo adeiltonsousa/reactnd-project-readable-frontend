@@ -6,7 +6,9 @@ import ContentPosts from './components/ContentPosts'
 import { Container } from 'react-bootstrap'
 import './style.css'
 import * as PostsAPI from './PostsAPI';
-import { listCategories } from './action/categories'
+import {
+  listCategories
+} from '../src/action/categorias'
 import { connect } from 'react-redux'
 
 class App extends React.Component {

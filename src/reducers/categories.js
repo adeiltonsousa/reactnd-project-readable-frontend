@@ -1,4 +1,4 @@
-import { LIST_CATEGORIES } from '../action/categories'
+import { LIST_CATEGORIES } from '../action/categorias'
 
 const initialState = {
   loaded: false,
