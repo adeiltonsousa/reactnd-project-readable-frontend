@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Form, Col, Row, Button, ButtonToolbar, Alert, variant } from 'react-bootstrap';
+import { bindActionCreators } from 'redux'
 import {
-  addPosts
+  sendPost
 } from '../action/posts'
 
 
@@ -11,7 +13,7 @@ class NewPost extends React.Component {
     title: "",
     author: "",
     body: "",
-    category: "",
+    category: ""
   };
 
   handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -43,29 +45,33 @@ class NewPost extends React.Component {
     });
   }
 
-    handleSubmit(event) {
-      let campo_vazio = "Preencha todos os ítens do formulário";
 
-      const addPosts = {
-          id: Math.random().toString(36).substr(-8),
-          timestamp: Date.now(),
-          title: this.state.title,
-          body: this.state.body,
-          author: this.state.author,
-          category: this.state.category,
-          voteScore: 0,
-          deleted: false,
-          commentCount: 0,
-          comments: [],
-      }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    let campo_vazio = "Preencha todos os ítens do formulário";
 
-      if (this.state.category!=="" & this.state.title!=="" & this.state.author!=="" & this.state.body!=="" ){
-        handleAddPost(addPosts);
-        event.preventDefault();
-      } else {
-        return document.getElementById('alerta').innerHTML = campo_vazio;
-      }
-  }
+    const data = {
+        id: Math.random().toString(36).substr(-8),
+        timestamp: Date.now(),
+        title: this.state.title,
+        body: this.state.body,
+        author: this.state.author,
+        category: this.state.category,
+        voteScore: 0,
+        deleted: false,
+        commentCount: 0,
+        comments: [],
+    }
+
+    if (this.state.category!=="" & this.state.title!=="" & this.state.author!=="" & this.state.body!=="" ){
+      this.props.sendPost(data)
+      // this.props.dispatch(sendPost(this.state)).then(data => {
+      //   console.log('The form has sent', data )
+      // })
+    } else {
+      return document.getElementById('alerta').innerHTML = campo_vazio;
+    }
+}
 
   render() {
     return (
@@ -129,16 +135,15 @@ class NewPost extends React.Component {
           </Row>
 
         </Form.Group>
-        <input
-          type='text'
-          placeholder='Add Todo'
-          ref={(input) => this.input = input}
-        />
-        <button onClick={this.addItem}>Add Todo</button>
       </Form>
 
     );
   }
 }
 
-export default NewPost
+const mapDispatchToProps = dispatch => bindActionCreators(
+  { sendPost },
+  dispatch,
+)
+  
+export default connect(null, mapDispatchToProps)(NewPost);

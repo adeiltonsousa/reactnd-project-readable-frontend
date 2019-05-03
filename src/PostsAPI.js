@@ -20,10 +20,15 @@ export function getPosts() {
       .then(response => response.json())
 }
 
-export const handleAddPost = (post) => {	
+export const sendpost = (post) => {	
   return fetch(`${api}/posts`, { 	
     method: 'POST',	
-    headers: headers,	
-    body: JSON.stringify(post)	
+    headers: {
+      ...headers,
+     'Accept': 'application/json',
+     'Content-type': 'application/json'
+    },	
+    body: JSON.stringify(post)
+
   })	
 }

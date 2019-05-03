@@ -1,9 +1,0 @@
-Trabalhar com Redux:
-    1 - Criar função Action;
-        Cada item deverá ser representado por uma função de ação;
-    2 - Criar o reducer;
-        A regra de negocio das ações são configuradas aqui (INC...DEC... com atualização dos estados para cada ACTION)
-    3 - No componente que vai receber o estado, configurar o redux
-        importar o bindActionCreators, connect. e importar os Actions
-        Criar os métodos mapStateTiProps
-

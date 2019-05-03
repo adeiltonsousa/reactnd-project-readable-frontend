@@ -1,27 +1,15 @@
 import * as PostsAPI from '../PostsAPI'
 
 export const LIST_POSTS = 'LIST_POSTS'
-export const ADD_POST = 'ADD_POST'
-export const ADD_TODO = 'ADD_TODO'
+export const POST_ADD = 'POST_ADD'
 
 
-function addPost(post) {
-    return {
-        type: ADD_POST,
-        
-    }
-}
-
-export function addPosts(name, cb) {
-    return (dispatch) => {
-        return PostsAPI.handleAddPost(name)
-            .then((post) => {
-                dispatch(addTodo(post))
-                cb()
-            })
-            .catch(() => {
-                alert('Erro')
-            })
+export const sendPost = (post) => {
+    return dispath => {
+          return PostsAPI.sendpost(post).then( result => {
+               dispath({type: 'POST_ADD', payload: result});
+               return result;
+          });
     }
 }
 
@@ -29,12 +17,5 @@ export function listPosts(posts) {
     return {
         type: LIST_POSTS,
         payload: posts
-    }
-}
-
-function addTodo(todo) {
-    return {
-        type: ADD_TODO,
-        todo,
     }
 }
