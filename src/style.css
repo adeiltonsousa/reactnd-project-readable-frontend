@@ -73,3 +73,6 @@ Button {
     height: auto;
 }
 
+.alerta {
+    color: red;
+}

@@ -1,7 +1,5 @@
 import React from 'react'
-import InfoPost from './InfoPost'
 import BodyPost from './BodyPost'
-import * as PostsAPI from '../PostsAPI'
 
 class ContentPosts extends React.Component {
 
@@ -15,7 +13,6 @@ class ContentPosts extends React.Component {
           </p>
         <div className="post">  
           <BodyPost />
-                  {/* <InfoPost post={ post } /> */}
         </div>
       </span>
     );

@@ -1,13 +1,16 @@
-import { ADD_POST } from '../action'
+import { ADD_POST } from '../action/posts'
 
-const initialState = {
-    data: []
-}
+import {
+    RECEIVE_DATA
+  } from '../action/index'
 
-export default function addPost(state = initialState, action) {
+export default function addPost(state = [], action) {
     switch (action.type) {
         case ADD_POST:
-            return Object.assign([...state], {[Object.keys(state).length]: action.addNewPost})
+            return state.concat([action.posts])
+            //return Object.assign([...state], {[Object.keys(state).length]: action.addNewPost})
+        case RECEIVE_DATA:
+            return action.posts
         default:
             return state
     }

@@ -1,4 +1,5 @@
 import { LIST_CATEGORIES } from '../action/categorias'
+import { ADD_POST } from '../action/posts'
 
 
 const checker = (store) => (next) => (action) => {
@@ -7,6 +8,13 @@ const checker = (store) => (next) => (action) => {
     ) {
         return next(action)
     }
+    if (
+        action.type === ADD_POST
+    ) {
+        // alert("Esta enviando post")
+        return next(action)
+    }
+
     return next(action)
 }
 

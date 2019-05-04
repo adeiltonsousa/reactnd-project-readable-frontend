@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Form, Col, Row, Button, ButtonToolbar, Alert, variant } from 'react-bootstrap';
+import { Form, Col, Row, Button, ButtonToolbar } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import {
   sendPost
@@ -48,7 +48,7 @@ class NewPost extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let campo_vazio = "Preencha todos os ítens do formulário";
+    let campo_vazio = "Preencha todos os campos do formulário";
 
     const data = {
         id: Math.random().toString(36).substr(-8),
@@ -64,10 +64,8 @@ class NewPost extends React.Component {
     }
 
     if (this.state.category!=="" & this.state.title!=="" & this.state.author!=="" & this.state.body!=="" ){
-      this.props.sendPost(data)
-      // this.props.dispatch(sendPost(this.state)).then(data => {
-      //   console.log('The form has sent', data )
-      // })
+        this.props.sendPost(data)
+  
     } else {
       return document.getElementById('alerta').innerHTML = campo_vazio;
     }
@@ -87,7 +85,6 @@ class NewPost extends React.Component {
                 <option value="redux">Redux</option>
                 <option value="udacity">Udacity</option>
               </Form.Control><br />
-              <span id='alerta'></span>
             </Col>
           </Row>
 
@@ -131,6 +128,7 @@ class NewPost extends React.Component {
                 <Button variant="outline-secondary" onClick={this.handleSubmit} >Postar</Button>
                 <Button variant="outline-secondary">Cancelar</Button>
               </ButtonToolbar>
+              <span className="alerta" id='alerta'></span>
             </Col>
           </Row>
 

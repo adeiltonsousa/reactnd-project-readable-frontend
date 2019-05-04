@@ -6,9 +6,8 @@ import ContentPosts from './components/ContentPosts'
 import { Container } from 'react-bootstrap'
 import './style.css'
 import * as PostsAPI from './PostsAPI';
-import {
-  listCategories
-} from '../src/action/categorias'
+import { listCategories } from '../src/action/categorias'
+import { handleInitialData } from '../src/action'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
@@ -18,10 +17,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(handleInitialData())
+
     PostsAPI.getCategories()
       .then(categories => {
         this.props.dispatch( listCategories(categories) );
-
         this.setState({ loading: false })
       })
   }
@@ -29,7 +30,7 @@ class App extends React.Component {
   render() {
 
 
-     if(this.state.loading) return <div>Loading...</div>
+    if(this.state.loading) return <div>Loading...</div>
 
     return (
       <Container className="container">

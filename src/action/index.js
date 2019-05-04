@@ -7,7 +7,7 @@ function receiveData(posts, categorias) {
     return {
         type: RECEIVE_DATA,
         posts,
-        categorias,
+        categorias
     }
 }
 

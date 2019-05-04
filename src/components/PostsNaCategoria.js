@@ -1,5 +1,4 @@
 import React from 'react'
-import InfoPost from './InfoPost'
 import BodyPost from './BodyPost'
 import { Row, Col } from 'react-bootstrap'
 import * as PostsAPI from '../PostsAPI'
