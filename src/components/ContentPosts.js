@@ -1,5 +1,5 @@
 import React from 'react'
-import BodyPost from './BodyPost'
+import ListPost from './ListPost'
 
 class ContentPosts extends React.Component {
 
@@ -12,7 +12,7 @@ class ContentPosts extends React.Component {
             Postagens Recentes:
           </p>
         <div className="post">  
-          <BodyPost />
+          <ListPost />
         </div>
       </span>
     );

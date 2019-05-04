@@ -11,11 +11,8 @@ const checker = (store) => (next) => (action) => {
     if (
         action.type === ADD_POST
     ) {
-        // alert("Esta enviando post")
-        return next(action)
+        return alert("passouno middleware")
     }
-
-    return next(action)
+     return next(action)
 }
-
 export default checker
