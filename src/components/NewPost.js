@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Form, Col, Row, Button, ButtonToolbar } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import {
-  sendPost
+  sendPost,
 } from '../action/posts'
 
 
@@ -20,6 +20,7 @@ class NewPost extends React.Component {
   handleChangeAuthor = this.handleChangeAuthor.bind(this);
   handleChangeBody = this.handleChangeBody.bind(this);
   handleChangeCategory = this.handleChangeCategory.bind(this);
+  handleClear = this.handleClear.bind(this);
 
   handleChangeTitle(event) {
     this.setState({
@@ -45,6 +46,14 @@ class NewPost extends React.Component {
     });
   }
 
+  handleClear(event) {
+    this.setState({
+      category: event.target.value,
+      title: event.target.value,
+      author: event.target.value,
+      body: event.target.value,
+    });
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -65,6 +74,7 @@ class NewPost extends React.Component {
 
     if (this.state.category!=="" & this.state.title!=="" & this.state.author!=="" & this.state.body!=="" ){
         this.props.sendPost(data)
+        this.handleClear(event)
   
     } else {
       return document.getElementById('alerta').innerHTML = campo_vazio;
@@ -79,7 +89,7 @@ class NewPost extends React.Component {
           <Row>
             <Col>
               <Form.Label>Selecione uma Categoria</Form.Label>
-              <Form.Control as="select" onChange={this.handleChangeCategory}>
+              <Form.Control as="select" value={this.state.category} onChange={this.handleChangeCategory}>
                 <option value="">...</option>
                 <option value="react">React</option>
                 <option value="redux">Redux</option>
@@ -126,9 +136,9 @@ class NewPost extends React.Component {
             <Col>
               <ButtonToolbar className="separar">
                 <Button variant="outline-secondary" onClick={this.handleSubmit} >Postar</Button>
-                <Button variant="outline-secondary">Cancelar</Button>
+                <Button variant="outline-secondary" onClick={this.handleClear}>Cancelar</Button>
               </ButtonToolbar>
-              <span className="alerta" id='alerta'></span>
+              <span className="alerta" id='alerta' ></span>
             </Col>
           </Row>
 

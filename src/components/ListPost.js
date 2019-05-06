@@ -20,7 +20,6 @@ class BodyPost extends React.Component {
     PostsAPI.getPosts()
       .then(posts => {
         this.props.dispatch(listPosts(posts));
-
         this.setState({ loading: false })
       })
   }
