@@ -11,7 +11,8 @@ const checker = (store) => (next) => (action) => {
     if (
         action.type === ADD_POST
     ) {
-        return alert("passouno middleware")
+        alert("passou no middleware")
+        return next(action);
     }
      return next(action)
 }

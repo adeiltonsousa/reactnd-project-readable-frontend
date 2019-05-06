@@ -29,6 +29,6 @@ export const sendpost = (post) => {
      'Content-type': 'application/json'
     },	
     body: JSON.stringify(post)
-
-  })	
+  })
+  .then(response => response.json())
 }
