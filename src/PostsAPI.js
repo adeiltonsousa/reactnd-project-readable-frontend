@@ -33,11 +33,13 @@ export const sendpost = (post) => {
   .then(response => response.json())
 }
 
-// export const updateVotePost = (postId, vote) =>
-//     fetch(`${api}/posts/${postId}`, {
-//         method: `post`,
-//         headers: headers,
-//         body: JSON.stringify({ 'option': vote })
-//     })
-//     .then(res => res.json())
-//     .then(data => data)
+
+export const votePost = (postId, voteType) =>
+  fetch(`${api}/posts/${postId}`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({option: voteType}),
+  })

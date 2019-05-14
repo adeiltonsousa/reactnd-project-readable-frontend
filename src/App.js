@@ -2,7 +2,7 @@ import React from 'react'
 import ListCategories from './components/ListCategories'
 import NewPost from './components/NewPost'
 import NavBar from './components/NavBar'
-import ListPost from './components/ListPost'
+import BodyPost from './components/BodyPost'
 import { Container } from 'react-bootstrap'
 import './style.css'
 import * as PostsAPI from './PostsAPI';
@@ -36,7 +36,7 @@ class App extends React.Component {
       <Container className="container">
         <NavBar />
         <ListCategories />
-        <ListPost />
+        <BodyPost />
         <NewPost />
       </Container>
     );

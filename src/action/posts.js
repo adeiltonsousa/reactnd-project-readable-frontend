@@ -1,10 +1,6 @@
 import * as PostsAPI from '../PostsAPI'
-
 export const LIST_POSTS = 'LIST_POSTS'
 export const ADD_POST = 'ADD_POST'
-// export const UP_VOTE_POST = "UP_VOTE_POST"
-// export const DOWN_VOTE_POST = "DOWN_VOTE_POST";
-
 
 export const sendPost = (post) => {
     return dispath => {
@@ -22,32 +18,16 @@ export function listPosts(posts) {
     }
 }
 
-// function downVotePost(id) {
-//     return {
-//         type: DOWN_VOTE_POST,
-//         id
-//     };
-// }
-
-
-// function upVotePost(id) {
-//     return {
-//         type: UP_VOTE_POST,
-//         id
-//     };
-// }
-
-// export const updateVote = (id, vote) => dispatch => {
-//     PostsAPI.updateVotePost(id, vote)
-//     if(vote === "upVote") {
-//         dispatch(upVotePost(id))
-//     } else {
-//         dispatch(downVotePost(id))
-//     }
-// }
-
-// export function downVote() {
-//     return {
-//         type: DOWN_VOTE
-//     }
-// }
+export const VOTE_POST = 'VOTEFORPOST';
+export function voteForPost(postId, voteType) {
+    return {
+        type: VOTE_POST,
+        postId,
+        voteType,
+    }
+}
+export function votePost(postId, voteType){
+  return function(dispatch){
+    return PostsAPI.votePost(postId, voteType).then(dispatch(voteForPost(postId, voteType)))
+  }
+}

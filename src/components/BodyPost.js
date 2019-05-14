@@ -1,14 +1,13 @@
 import React from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { listPosts } from '../action/posts';
+import { listPosts, votePost } from '../action/posts';
 import * as PostsAPI from '../PostsAPI';
 import { connect } from 'react-redux'
 import { Row, Col, Image } from 'react-bootstrap'
 import Moment from 'react-moment'
 import like from '../static/img/like.png'
 import nolike from '../static/img/nolike.png'
-
 
 class BodyPost extends React.Component {
 
@@ -23,6 +22,9 @@ class BodyPost extends React.Component {
         this.setState({ loading: false })
       })
   }
+
+  votePostHandler = (id, voteType) => this.props.dispatch(votePost(id, voteType))
+
 
   render() {
 
@@ -45,9 +47,9 @@ class BodyPost extends React.Component {
                 <span>Categoria: {p.category}</span>
               </Col>
               <Col>
-                <Image src={like} fluid className="bt_pontos" />
+                <Image src={like} fluid className="bt_pontos" onClick = {() => this.votePostHandler(p.id, 'upVote')} />
                 <span>Votos: {p.voteScore}</span>
-                <Image src={nolike} fluid className="bt_pontos" />
+                <Image src={nolike} fluid className="bt_pontos" onClick = {() => this.votePostHandler(p.id, 'downVote')} />
               </Col>
               <Col>
                 <Link to="#">

@@ -1,9 +1,9 @@
 import {
     ADD_POST,
     LIST_POSTS,
-    UP_VOTE_POST,
-    DOWN_VOTE_POST
+    VOTE_POST
 } from '../action/posts'
+
 
 import {
     RECEIVE_DATA
@@ -16,8 +16,6 @@ const initialState = {
 }
 
 export default function posts(state = initialState, action) {
-
-    // const { id } = action
 
     switch (action.type) {
         case ADD_POST:
@@ -32,28 +30,22 @@ export default function posts(state = initialState, action) {
                 loaded: true,
                 data: action.payload,
             }
-        // case UP_VOTE_POST:
-        //     let postupvote = state.map(p => {
-        //         if (p.id === id) {
-        //             return {
-        //                 ...p,
-        //                 voteScore: p.voteScore + 1
-        //             };
-        //         }
-        //         return p;
-        //     });
-        //     return postupvote;
-        // case DOWN_VOTE_POST:
-        //     let postdownvote = state.map(p => {
-        //         if (p.id === id) {
-        //             return {
-        //                 ...p,
-        //                 voteScore: p.voteScore - 1
-        //             };
-        //         }
-        //         return p;
-        //     });
-        //     return postdownvote;
+        case VOTE_POST:
+            return {
+                loaded: true,
+                data: state.data.map(postObj => {
+                    let newPostObj = Object.assign({}, postObj)
+                    if (newPostObj.id === action.postId) {
+                        if (action.voteType === 'upVote') {
+                            newPostObj.voteScore++
+                        }
+                        if (action.voteType === 'downVote') {
+                            newPostObj.voteScore--
+                        }
+                    }
+                    return newPostObj
+                })
+            }
         case RECEIVE_DATA:
             return action.posts
         default:

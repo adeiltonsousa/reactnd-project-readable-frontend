@@ -69,8 +69,10 @@ Button {
 .bt_pontos {
     padding-left: 7px;
     padding-right: 7px;
-    width: 30px;
+    width: 33px;
     height: auto;
+    display: block;
+    cursor: pointer;    
 }
 
 .alerta {
