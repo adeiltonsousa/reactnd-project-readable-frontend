@@ -6,8 +6,9 @@ import BodyPost from './components/BodyPost'
 import { Container } from 'react-bootstrap'
 import './style.css'
 import * as PostsAPI from './PostsAPI';
-import { listCategories } from '../src/action/categorias'
-import { handleInitialData } from '../src/action'
+import {  handleInitialData,
+          listCategories
+        } from '../src/action'
 import { connect } from 'react-redux'
 
 class App extends React.Component {

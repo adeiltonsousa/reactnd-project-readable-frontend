@@ -2,16 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import DetailedPost from './components/DetailedPost'
 import Erro404 from './components/Erro404'
 import reducer from './reducers'
-import middleware from './middleware'
+import thunk from 'redux-thunk';
 
 
-const store = createStore(reducer, middleware)
+
+const store = createStore(
+  reducer,
+  compose(
+      applyMiddleware(thunk)
+  )
+);
 
 ReactDOM.render(
     <Provider store={store}>

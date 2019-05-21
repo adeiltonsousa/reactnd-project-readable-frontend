@@ -4,7 +4,7 @@ import { Form, Col, Row, Button, ButtonToolbar } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import {
   sendPost,
-} from '../action/posts'
+} from '../action'
 
 
 class NewPost extends React.Component {

@@ -1,13 +1,17 @@
 import React from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { listPosts, votePost } from '../action/posts';
 import * as PostsAPI from '../PostsAPI';
 import { connect } from 'react-redux'
 import { Row, Col, Image } from 'react-bootstrap'
 import Moment from 'react-moment'
 import like from '../static/img/like.png'
 import nolike from '../static/img/nolike.png'
+import {
+  listPosts,
+  votePost
+} from '../action';
+
 
 class BodyPost extends React.Component {
 
@@ -24,7 +28,6 @@ class BodyPost extends React.Component {
   }
 
   votePostHandler = (id, voteType) => this.props.dispatch(votePost(id, voteType))
-
 
   render() {
 

@@ -20,6 +20,11 @@ export function getPosts() {
       .then(response => response.json())
 }
 
+// export function getSinglePost() {
+//   return fetch(`${api}/posts/${id}`, { headers: headers })
+//       .then(response => response.json())
+// }
+
 export const sendpost = (post) => {	
   return fetch(`${api}/posts`, { 	
     method: 'POST',	
