@@ -1,5 +1,4 @@
 import React from 'react'
-import * as PostsAPI from '../PostsAPI';
 import { connect } from 'react-redux'
 
 

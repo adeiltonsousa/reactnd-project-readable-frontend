@@ -15,7 +15,6 @@ const initialState = {
     data: []
 }
 
-
 function categories(state = initialState, action) {
     switch (action.type) {
         case LIST_CATEGORIES:
@@ -28,9 +27,6 @@ function categories(state = initialState, action) {
             return state
     }
 }
-
-
-
 
 function posts(state = initialState, action) {
 
@@ -75,8 +71,6 @@ function posts(state = initialState, action) {
             return state
     }
 }
-
-
 
 export default combineReducers({
     categories,

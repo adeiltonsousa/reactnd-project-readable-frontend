@@ -1,16 +1,11 @@
 import React from 'react'
-import { ListGroup } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import * as PostsAPI from '../PostsAPI';
 import { connect } from 'react-redux'
-import { Row, Col, Image } from 'react-bootstrap'
-import Moment from 'react-moment'
-import like from '../static/img/like.png'
-import nolike from '../static/img/nolike.png'
+import Post from './Post';
 import {
-  listPosts,
-  votePost
+  listPosts  
 } from '../action';
+
 
 
 class BodyPost extends React.Component {
@@ -27,8 +22,6 @@ class BodyPost extends React.Component {
       })
   }
 
-  votePostHandler = (id, voteType) => this.props.dispatch(votePost(id, voteType))
-
   render() {
 
     if (this.state.loading) return <div>Loading...</div>
@@ -36,37 +29,9 @@ class BodyPost extends React.Component {
     return (
       <div>
         {this.props.allposts.map((p) =>
-          <ListGroup key={p.id} variant="flush" className="posts separar">
-            <Link to={`/${p.category}/${p.id}`}>
-              <ListGroup.Item variant="secondary">   {p.title}  </ListGroup.Item>
-            </Link>
-            <ListGroup.Item>   {p.body}  </ListGroup.Item>
+          
+           <Post p={p} />
 
-            <Row className="infosPost" >
-              <Col>
-                <span>Autor: {p.author}</span>
-              </Col>
-              <Col>
-                <span>Categoria: {p.category}</span>
-              </Col>
-              <Col>
-                <Image src={like} fluid className="bt_pontos" onClick = {() => this.votePostHandler(p.id, 'upVote')} />
-                <span>Votos: {p.voteScore}</span>
-                <Image src={nolike} fluid className="bt_pontos" onClick = {() => this.votePostHandler(p.id, 'downVote')} />
-              </Col>
-              <Col>
-                <Link to="#">
-                  <span>{p.commentCount} Comentários</span>
-                </Link>
-              </Col>
-              <Col>
-                <span>
-                  <Moment format="DD/MM/YYYY">{p.timestamp}</Moment>
-                </span>
-              </Col>
-            </Row>
-
-          </ListGroup>
         )}
       </div>
     )
