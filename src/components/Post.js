@@ -15,15 +15,17 @@ import {
 
 class Post extends React.Component {
 
-  
+
   votePostHandler = (id, voteType) => this.props.dispatch(votePost(id, voteType))
+
+  
 
   render() {
 
     return (
       <div>
         <ListGroup key={this.props.p.id} variant="flush" className="posts separar">
-          <Link to={`/${this.props.p.category}/${this.props.p.id}`}>
+          <Link to={`/posts/${this.props.p.id}`}>
             <ListGroup.Item variant="secondary">   {this.props.p.title}  </ListGroup.Item>
           </Link>
           <ListGroup.Item>   {this.props.p.body}  </ListGroup.Item>
@@ -56,6 +58,7 @@ class Post extends React.Component {
       </div>
     );
   }
+  
 }
 
 export default connect(undefined)(Post)

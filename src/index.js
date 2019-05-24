@@ -6,6 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Post from './components/Post'
+import SinglePost from './components/SinglePost'
 import Erro404 from './components/Erro404'
 import reducer from './reducers'
 import thunk from 'redux-thunk';
@@ -24,7 +25,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
             <Route path="/" exact={true} component={ App } />
-            <Route path="/:category/:id" component={ Post } />
+            <Route path="/posts/:id" component={ SinglePost } />
             <Route path='*' component={ Erro404 } />
         </Switch>
       </BrowserRouter>

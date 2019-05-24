@@ -1,6 +1,8 @@
 import React from 'react'
 import * as PostsAPI from '../PostsAPI';
 import { connect } from 'react-redux'
+import Post from '../components/Post'
+
 
 
 class SimplePost extends React.Component {
@@ -10,7 +12,7 @@ class SimplePost extends React.Component {
   }
 
   componentDidMount() {
-    PostsAPI.singlePost()
+    PostsAPI.singlePost(this.props.match.params.id)
       .then(post => {
         this.setState({ loading: false, data: post })
       })
@@ -22,7 +24,7 @@ class SimplePost extends React.Component {
 
     return (
       <div>
-        Title: {this.state.data.title}      
+        <Post p={this.state.data} />     
       </div>
     )
   }
