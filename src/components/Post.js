@@ -6,8 +6,10 @@ import Moment from 'react-moment'
 import like from '../static/img/like.png'
 import nolike from '../static/img/nolike.png'
 import { ListGroup } from 'react-bootstrap'
+import * as PostsAPI from '../PostsAPI';
 import {
-  votePost
+  votePost,
+  singlePostAc
 } from '../action';
 
 

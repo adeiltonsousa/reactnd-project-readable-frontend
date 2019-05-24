@@ -17,27 +17,21 @@ export const getCategories = () => {
 
 export function getPosts() {
   return fetch(`${api}/posts`, { headers: headers })
-      .then(response => response.json())
+    .then(response => response.json())
 }
 
-// export function getSinglePost() {
-//   return fetch(`${api}/posts/${id}`, { headers: headers })
-//       .then(response => response.json())
-// }
-
-export const sendpost = (post) => {	
-  return fetch(`${api}/posts`, { 	
-    method: 'POST',	
+export const sendpost = (post) => {
+  return fetch(`${api}/posts`, {
+    method: 'POST',
     headers: {
       ...headers,
-     'Accept': 'application/json',
-     'Content-type': 'application/json'
-    },	
+      'Accept': 'application/json',
+      'Content-type': 'application/json'
+    },
     body: JSON.stringify(post)
   })
-  .then(response => response.json())
+    .then(response => response.json())
 }
-
 
 export const votePost = (postId, voteType) =>
   fetch(`${api}/posts/${postId}`, {
@@ -46,5 +40,10 @@ export const votePost = (postId, voteType) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({option: voteType}),
-  })
+    body: JSON.stringify({ option: voteType }),
+})
+
+export function singlePost(postId) {
+  return fetch(`${api}/posts/${postId}`, { headers: headers })
+    .then(response => response.json())
+}

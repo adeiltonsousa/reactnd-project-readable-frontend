@@ -49,6 +49,7 @@ export function listPosts(posts) {
     }
 }
 
+
 export function voteForPost(postId, voteType) {
     return {
         type: VOTE_POST,
@@ -61,4 +62,26 @@ export function votePost(postId, voteType){
   return function(dispatch){
     return PostsAPI.votePost(postId, voteType).then(dispatch(voteForPost(postId, voteType)))
   }
+}
+
+export function getSinglePost(postId) {
+    return {
+        type: SINGLE_POST,
+        postId,
+    }
+}
+
+// export function singlePostAc(postId) {  
+//     return function (dispatch) {
+//         return PostsAPI.singlePost(postId).then(dispatch(getSinglePost(postId)))
+//     }
+// }
+
+export function singlePostAc(postId) {  
+    return function (dispatch) {
+        return PostsAPI.singlePost(postId).then(data => {
+           console.log('data: ', data);
+           dispatch(getSinglePost(data))
+        })
+    }
 }

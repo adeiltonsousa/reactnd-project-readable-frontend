@@ -3,6 +3,7 @@ import ListCategories from './components/ListCategories'
 import NewPost from './components/NewPost'
 import NavBar from './components/NavBar'
 import BodyPost from './components/BodyPost'
+import SinglePost from './components/SinglePost'
 import { Container } from 'react-bootstrap'
 import './style.css'
 import * as PostsAPI from './PostsAPI';
