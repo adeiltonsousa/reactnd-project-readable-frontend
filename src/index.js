@@ -1,37 +1,123 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Post from './components/Post'
-import SinglePost from './components/SinglePost'
-import Erro404 from './components/Erro404'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { Provider } from 'react-redux'
+import ReadableApp from './ReadableApp';
 import reducer from './reducers'
-import thunk from 'redux-thunk';
+import registerServiceWorker from './registerServiceWorker';
+import {
+  UP_VOTE,
+  DOWN_VOTE,
+  UP_VOTE_FOR_COMMENTS,
+  DOWN_VOTE_FOR_COMMENTS,
+  ADD_POST,
+  EDIT_POST,
+  REMOVE_POST,
+  ADD_COMMENT,
+  EDIT_COMMENT,
+  REMOVE_COMMENT,
+} from './actions';
+import * as ReadableAPI from './utils/ReadableAPI'
 
-
-
+const updateServer = store => next => action => {
+  let result = next(action)
+  switch (action.type){
+    case UP_VOTE:
+      try{
+        ReadableAPI.postUpVoteScore(action.postToUpdateVoteScore.id).then(alert('Voted!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    case DOWN_VOTE:
+      try{
+        ReadableAPI.postDownVoteScore(action.postToUpdateVoteScore.id).then(alert('Voted!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    case UP_VOTE_FOR_COMMENTS:
+      try{
+        ReadableAPI.postUpVoteScoreForComments(action.commentToUpdateVoteScore.id).then(alert('Voted!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    case DOWN_VOTE_FOR_COMMENTS:
+      try{
+        ReadableAPI.postDownVoteScoreForComments(action.commentToUpdateVoteScore.id).then(alert('Voted!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    case ADD_POST:
+      try{
+        ReadableAPI.addPost(action.postToAdd).then(alert('A new post was added successfully!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    case EDIT_POST:
+      try{
+        ReadableAPI.editPost(action.postToEdit).then(alert('The post was edited successfully!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    case REMOVE_POST:
+      try{
+        ReadableAPI.deletePost(action.postToRemove.id).then(alert('Post removed successfully!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    case ADD_COMMENT:
+      try{
+        ReadableAPI.addComment(action.commentToAdd).then(alert('A new comment was added successfully!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    case EDIT_COMMENT:
+      try{
+        ReadableAPI.editComment(action.commentToEdit).then(alert('The comment was edited successfully!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    case REMOVE_COMMENT:
+      try{
+        ReadableAPI.deleteComment(action.commentToRemove.id).then(alert('Comment removed successfully!'))
+      }
+      catch(error){
+        console.log(error, store.getState())
+      }
+    break
+    default:
+      return null
+  }
+  return result
+}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   reducer,
-  compose(
-      applyMiddleware(thunk)
+  composeEnhancers(
+    applyMiddleware( updateServer )
   )
-);
-
+)
 ReactDOM.render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <Switch>
-            <Route path="/" exact={true} component={ App } />
-            <Route path="/posts/:id" component={ SinglePost } />
-            <Route path='*' component={ Erro404 } />
-        </Switch>
-      </BrowserRouter>
-    </Provider>
-, document.getElementById('root'));
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  <Provider store={store}>
+    <ReadableApp/>    
+  </Provider>,
+  document.getElementById('root')
+);
+registerServiceWorker();
