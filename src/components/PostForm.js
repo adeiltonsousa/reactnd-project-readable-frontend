@@ -6,9 +6,9 @@ import '../ReadableApp.js'
 
 class PostForm extends React.Component{
     state = {
-        title: "How to add a new post",
-        author: "rsscss",
-        body: "To add a new post just click on the submit button.",
+        title: "",
+        author: "",
+        body: "",
         category:"",
         ableToRedirect:"false",
     };

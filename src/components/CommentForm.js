@@ -7,8 +7,8 @@ import '../ReadableApp.js'
 
 class CommentForm extends React.Component{
     state = {
-        author: "rsscss",
-        body: "To add a new comment just click on the submit button.",
+        author: "",
+        body: "",
         ableToRedirect:"false",
     };
     static propTypes = {

@@ -6,10 +6,13 @@ import {FaArrowDown, FaArrowUp, FaEdit, FaEraser, FaPlus} from 'react-icons/fa'
 import { upVote, downVote, removePost, setDashBoardToEditPost } from '../actions'
 import '../ReadableApp.js'
 
+
+
 class MainPostItem extends React.Component{
     static propTypes = {
-        setPath: PropTypes.string.isRequired, 
-    }
+        setPath: PropTypes.string.isRequired,
+    }    
+
     render(){
         let showingPosts = this.props.post
         let currentView = this.props.setPath
@@ -17,10 +20,12 @@ class MainPostItem extends React.Component{
             const converted = new Date(toString)
             return JSON.stringify(converted)
         }
+
         function sortByVoteScore(toSort){
-            let sortedPosts = toSort.sort((a,b) => {return b.voteScore - a.voteScore})
+            var sortedPosts = toSort.sort((a,b) => {return b.voteScore - a.voteScore})
             return sortedPosts
         }
+
         function filterByCategory(toFilter, getView){
             if (getView!==""){
                 let filteredPosts = toFilter.filter((item)=>{
@@ -44,6 +49,7 @@ class MainPostItem extends React.Component{
                             <Link to={`/new_post`} className="link-top">
                                 <FaPlus className='react-icons'/>
                             </Link>
+
                         </div>
                     </div>
                 )
@@ -56,6 +62,9 @@ class MainPostItem extends React.Component{
                             <Link to={`/new_post`} className="link-top">
                                 <FaPlus className='react-icons'/>
                             </Link>
+                            <div className="tooltip">
+                    </div>
+
                         </div>
                         {sortByVoteScore(filterByCategory(showingPosts, currentView)).map((item) => (
                             <form key={item.id}>

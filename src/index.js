@@ -23,10 +23,10 @@ const updateServer = store => next => action => {
   let result = next(action)
   switch (action.type){
     case UP_VOTE:
-      try{
+      try {
         ReadableAPI.postUpVoteScore(action.postToUpdateVoteScore.id).then(alert('Voted!'))
       }
-      catch(error){
+      catch (error) {
         console.log(error, store.getState())
       }
     break

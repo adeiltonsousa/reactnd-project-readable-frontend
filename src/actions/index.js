@@ -14,6 +14,7 @@ export const LOAD_CATEGORY = 'LOAD_CATEGORY'
 export const SET_DASHBOARD_TO_EDIT_POST = 'SET_DASHBOARD_TO_EDIT_POST'
 export const SET_DASHBOARD_TO_ADD_COMMENT = 'SET_DASHBOARD_TO_ADD_COMMENT'
 export const SET_DASHBOARD_TO_EDIT_COMMENT = 'SET_DASHBOARD_TO_EDIT_COMMENT'
+export const LIST_FOR_VOTE = 'LIST_FOR_VOTE'
 
 export function loadPost({posts}){
   return {
@@ -21,6 +22,7 @@ export function loadPost({posts}){
     posts,
   }
 }
+
 export function addPost ({ postToAdd }) {
   return {
     type: ADD_POST,
